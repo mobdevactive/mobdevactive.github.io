@@ -3,9 +3,10 @@
 
 <head>
 
+<link rel="stylesheet" href="css/blueimp-gallery.min.css">
+
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -24,7 +25,43 @@
 <body>
 
 HELLO WORLD
+<!-- The Gallery as lightbox dialog, should be a child element of the document body -->
+<div id="blueimp-gallery" class="blueimp-gallery">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+</div>
 
+<div id="links">
+    <a href="images/1_1mg1594.jpg" title="Banana">
+        <img src="images/thumbnails/1_1mg1594.jpg" alt="Banana">
+    </a>
+    <a href="images/1_1picture-270.jpg" title="Apple">
+        <img src="images/thumbnails/1_1picture-270.jpg" alt="Apple">
+    </a>
+    <a href="images/1_1picture-274.jpg" title="Orange">
+        <img src="images/thumbnails/1_1picture-274.jpg" alt="Orange">
+    </a>
+</div>
+
+
+
+
+<script src="js/blueimp-gallery.min.js"></script>
+<script>
+document.getElementById('links').onclick = function (event) {
+    event = event || window.event;
+    var target = event.target || event.srcElement,
+        link = target.src ? target.parentNode : target,
+        options = {index: link, event: event},
+        links = this.getElementsByTagName('a');
+    blueimp.Gallery(links, options);
+};
+</script>
 
 </body>
 
